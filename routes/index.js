@@ -21,6 +21,7 @@ router.post('/echo', (req, res) => {
   const message = JSON.stringify({
     title: 'こんにちは!',
     body: `今は ${new Date()} です。`,
+    data: req.body.data,
   });
 
   pushManager.sendRandomDelay(req.body, message);
