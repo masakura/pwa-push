@@ -1,6 +1,7 @@
 const express = require('express');
 const webPush = require('web-push');
 const PushManager = require('./lib/push-manager');
+const debug = require('debug')('push-server:server');
 
 const router = express.Router();
 
@@ -44,7 +45,8 @@ router.post('/buy', (req, res) => {
       title: '配達完了',
       body: '配達が完了しました。',
       data: Object.assign({}, req.body.data, { state: 'complete' }),
-    }));
+    }))
+    .catch(error => debug(error));
 });
 
 module.exports = router;
