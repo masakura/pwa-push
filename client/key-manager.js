@@ -50,4 +50,15 @@ export class KeyManager {
       },
     });
   }
+
+  async buy(subscription) {
+    await fetch('http://localhost:3000/buy', {
+      method: 'POST',
+      body: JSON.stringify(subscription),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }

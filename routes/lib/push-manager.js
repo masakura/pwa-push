@@ -2,7 +2,7 @@ const webPush = require('web-push');
 
 module.exports = class PushManager {
   send(subscription, message) {
-    webPush.sendNotification(subscription, message);
+    return webPush.sendNotification(subscription, message);
   }
 
   sendRandomDelay(subscription, message) {

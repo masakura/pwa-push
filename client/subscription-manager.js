@@ -21,4 +21,8 @@ export class SubscriptionManager {
   async echo(subscription) {
     this.keyManager.echo(subscription);
   }
+
+  async buy(subscription) {
+    this.keyManager.buy(subscription);
+  }
 }

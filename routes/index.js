@@ -35,17 +35,17 @@ router.post('/buy', (req, res) => {
 
   Promise.resolve()
     .then(() => wait(5000))
-    .then(() => pushManager.send(req.body, {
+    .then(() => pushManager.send(req.body, JSON.stringify({
       title: '配達中',
-      body: 'ただいま配達中です。',
+      body: 'お近くの配送センターを出発しました。',
       data: Object.assign({}, req.body.data, { state: 'delivering' }),
-    }))
+    })))
     .then(() => wait(4000))
-    .then(() => pushManager.send(req.body, {
+    .then(() => pushManager.send(req.body, JSON.stringify({
       title: '配達完了',
       body: '配達が完了しました。',
       data: Object.assign({}, req.body.data, { state: 'complete' }),
-    }))
+    })))
     .catch(error => debug(error));
 });
 

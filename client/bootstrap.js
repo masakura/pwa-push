@@ -12,4 +12,6 @@ import { SubscriptionManager } from './subscription-manager.js';
 
   document.querySelector('#echo')
     .addEventListener('click', () => subscriptionManager.echo(subscription));
+  document.querySelector('#buy')
+    .addEventListener('click', () => subscriptionManager.buy(subscription));
 })();
