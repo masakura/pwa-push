@@ -32,23 +32,19 @@ router.post('/echo', (req, res) => {
 router.post('/buy', (req, res) => {
   res.send(JSON.stringify({}));
 
-  (async () => {
-    await wait(5000);
-
-    pushManager.send({
+  Promise.resolve()
+    .then(() => wait(5000))
+    .then(() => pushManager.send({
       title: '配達中',
       body: 'ただいま配達中です。',
       data: Object.assign({}, req.body.data, { state: 'delivering' }),
-    });
-
-    await wait(4000);
-
-    pushManager.send({
+    }))
+    .then(() => wait(4000))
+    .then(() => pushManager.send({
       title: '配達完了',
       body: '配達が完了しました。',
       data: Object.assign({}, req.body.data, { state: 'complete' }),
-    });
-  })();
+    }));
 });
 
 module.exports = router;
